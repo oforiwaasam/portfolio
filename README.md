@@ -3,3 +3,7 @@ This portfolio website is a way for anyone to get to know me well enough and als
 
 ### Website link
 You can view the website using this link: https://oforiwaasam.github.io/portfolio/
+
+### Features
+
+
