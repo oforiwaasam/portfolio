@@ -1,134 +1,496 @@
-<html>
-	<head>
-		<title>Lily Sam</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lily — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-		<!-- Header -->
-		<header id="header">
-			<div class="inner">
-				<a href="#" class="image avatar"><img src="images/lily.jpg" alt="" /></a>
-				<h1><strong>I am Lily Sam</strong>, a senior at <br />
-					<a href="https://www.columbia.edu">Columbia University</a> majoring in Computer Science.<br /></h1>
-			</div>
-		</header>
+<style>
+  /* ============================================================
+   THEME TOKENS
+   ============================================================ */
+  :root{
+    --font-sans:'Inter', system-ui, sans-serif;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
 
-		<!-- Main -->
-		<div id="main">
+    --maxw: 720px;
+    --radius: 14px;
+    --gutter: clamp(1.1rem, 5vw, 2rem);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-			<!-- One -->
-			<section id="one">
-				<header class="major">
-					<h2>Here is a little more about me</h2>
-				</header>
-				<p>I am a John W. Kluge Scholar under the Columbia Undergraduate Scholars Program (CUSP), which identifies a smaller cohort of students (top 5% of incoming freshmen) from around the world each year based on their academic interests and extracurricular passions. As an international student from Ghana, I'm excited about my time in the United States and the experiences that have shaped me so far. I love Science and Technology and I'm very excited about opportunities to use 
-					science and tech to solve problems all around the world and in my home country. Some of my interests in CS lie in Backend development, Data Science (mostly engineering and analytics) and Machine Learning.
-				</p>
-				<div class="box alt">
-					<div class="row gtr-50 gtr-uniform">
-						<div class="col-6"><span class="image fit"><img src="https://github-readme-stats-taupe-two.vercel.app/api/wakatime?username=oforiwaasam&hide_title=false&hide_border=true&langs_count=5&bg_color=00000000&title_color=888&text_color=49bf9d&layout=compact&custom_title=This week I worked on" alt="oforiwaasam"/></span></div>
-						<div class="col-6"><span class="image fit"><img src="https://github-readme-stats.vercel.app/api?username=oforiwaasam&show_icons=true&hide_border=true&include_all_commits=true&title_color=888&icon_color=888&text_color=49bf9d&locale=en" alt="oforiwaasam" /></span></div>
-					</div>
-				</div>
-			</section>
+    --glass-blur: 18px;
+  }
 
-			<!-- Two -->
-			<section id="two">
-				<h2>Projects</h2>
-				<div class="row">
-					<article class="col-6 col-12-xsmall work-item">
-						<img class="image fit thumb" src="images/proj5.jpeg" alt="" />
-						<!-- temporary solution for link to project -->
-						<a href="https://glitch.com/edit/#!/tree-roan-cup?path=index.html%3A20%3A82">Memory Game</a>
-						<!-- <h3>Memory Game</h3> -->
-						<p>I built a memory game using HTML, CSS and JavaScript</p>
-					</article>
-					<article class="col-6 col-12-xsmall work-item">
-						<img class="image fit thumb" src="images/proj5.jpeg" alt="" />
-<!-- 						<a href="https://Flask.losam5.repl.co">BooksHub</a> -->
-						<a href="https://github.com/oforiwaasam/bookshub">BooksHub</a>
-						<p>BooksHub is a web app built in Python and Flask, and interfacing with various APIs</p>
-					</article>
-					<article class="col-6 col-12-xsmall work-item">
-						<img class="image fit thumb" src="images/proj5.jpeg" alt="" />
-						<a href="https://snack.expo.dev/@losam5/05145a">FitGram</a>
-						<p>Built the frontend for a fashion app for my UI Design school project</p>
-					</article>
-				</div>
-			</section>
-							
-					<section id="three">
-						<h2>Wanna see my resume? Here is a link below!</h2>
-						<a href="./docs/Lily's resume.pdf" class="button primary icon solid fa-download">Resume</a>
-					</section>
+  [data-theme="dark"]{
+  --bg:        #0a0d14;
+  --bg-deep:   #060810;
+  --text:      #e9edf5;
+  --text-mid:  #9aa4b8;
+  --text-dim:  #6b7488;
 
-				<!-- Four -->
-					<section id="four">
-						<h2>Wanna get in touch? Send me an email below!</h2>
-						<!-- <p>Let's get talking here!</p> -->
-						<div class="row">
-							<div class="col-8 col-12-small">
-								<form method="post" action="#">
-									<div class="row gtr-uniform gtr-50">
-										<!-- <div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div> -->
-										<!-- <div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div> -->
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
-									</div>
-								</form>
-								<ul class="actions">
-									<li><a href="mailto:los2119@columbia.edu" class="button primary">Send Message</a></li>
-								</ul>
-							</div>
-							<div class="col-4 col-12-small">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										7029 Wien Hall<br />
-										70 Morningside Drive<br />
-										New York<br/>
-										United States
-									</li>
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="mailto:los2119@columbia.edu">los2119@columbia.edu</a>
-									</li>
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="mailto:lilyoforiwaas@gmail.com">lilyoforiwaas@gmail.com</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section>				
+  --accent:      #6f9bff;
+  --accent-soft: rgba(111,155,255,0.14);
+  --pulse:       #e0a94f;
 
-			</div>
+  --glass:       rgba(255,255,255,0.045);
+  --glass-brd:   rgba(255,255,255,0.10);
+  --glass-hi:    rgba(255,255,255,0.20);
+  --hairline:    rgba(255,255,255,0.08);
+  --shadow:      0 1px 1px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.45);
+  --scrim:       rgba(10,13,20,0.7);
+  } 
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/lily-oforiwaa-sam/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://github.com/oforiwaasam" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://twitter.com/LilyOforiwaa" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://www.facebook.com/lilyoforiwaa.sam/" class="icon brands fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="https://www.instagram.com/s.lee_lee/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; 2023</li><li>Lily Sam</li>
-					</ul>
-				</div>
-			</footer>
+  [data-theme="light"]{
+  --bg:        #f2f4f8;
+  --bg-deep:   #e7eaf1;
+  --text:      #12141c;
+  --text-mid:  #5b6272;
+  --text-dim:  #7b8296;
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  --accent:      #2f5dff;
+  --accent-soft: #e7ecff;
+  --pulse:       #b3760f;
 
-	</body>
+  --glass:       rgba(255,255,255,0.6);
+  --glass-brd:   rgba(20,22,30,0.10);
+  --glass-hi:    rgba(255,255,255,0.85);
+  --hairline:    rgba(20,22,30,0.08);
+  --shadow:      0 1px 1px rgba(20,22,30,.05), 0 12px 32px rgba(20,22,30,.08);
+  --scrim:       rgba(242,244,248,0.75);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  /* *{box-sizing:border-box; margin:0; padding:0;} */
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--font-sans); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background-color .35s var(--ease), color .35s var(--ease);
+  }
+  .mono{ font-family:var(--font-mono); }
+  .display{ font-family:var(--font-display); }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+
+  .wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+
+  /* ============================================================
+   AMBIENT MESH BACKGROUND
+   ============================================================ */
+  .mesh{ position:fixed; inset:0; z-index:-1; overflow:hidden; background:var(--bg-deep); }
+  .mesh span{ position:absolute; display:block; border-radius:50%; filter:blur(80px); will-change:transform; }
+  .mesh .b1{ width:44vw; height:44vw; top:-14vw; left:-8vw; background:var(--accent); opacity:.18; animation:float1 28s var(--ease) infinite alternate; }
+  .mesh .b2{ width:36vw; height:36vw; top:30vh; right:-10vw; background:#3ddad0; opacity:.12; animation:float2 34s var(--ease) infinite alternate; }
+  .mesh .b3{ width:40vw; height:40vw; bottom:-16vw; left:20vw; background:#8b7cf6; opacity:.10; animation:float3 40s var(--ease) infinite alternate; }
+  [data-theme="light"] .mesh .b1{ opacity:.20; }
+  [data-theme="light"] .mesh .b2{ opacity:.14; }
+  [data-theme="light"] .mesh .b3{ opacity:.12; }
+
+  @keyframes float1{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(6vw,5vh,0) scale(1.15);} }
+  @keyframes float2{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(-7vw,-6vh,0) scale(1.1);} }
+  @keyframes float3{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(4vw,-7vh,0) scale(1.18);} }
+
+  .mesh::after{
+    content:''; position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, var(--hairline) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--hairline) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(120% 90% at 50% 0%, #000 20%, transparent 78%);
+    -webkit-mask-image:radial-gradient(120% 90% at 50% 0%, #000 20%, transparent 78%);
+    opacity:.5;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .mesh span{ animation:none; }
+  }
+
+  /* ============================================================
+   GLASS PRIMITIVE
+   ============================================================ */
+  .glass{
+    position:relative;
+    background:var(--glass);
+    border:1px solid var(--glass-brd);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(160%);
+    backdrop-filter:blur(var(--glass-blur)) saturate(160%);
+  }
+  .glass::before{
+    content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none;
+    background:linear-gradient(160deg, var(--glass-hi), transparent 45%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:.8;
+  }
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .glass{ background:var(--bg-deep); }
+  }
+
+  /* ============================================================
+   HEADER
+   ============================================================ */
+  .rail{
+    height:3px; width:100%;
+    background:linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--rail-pct,12%), var(--hairline) var(--rail-pct,12%), var(--hairline) 100%);
+    position:relative; overflow:hidden;
+    transition:background .4s ease;
+  }
+  .rail::after{
+    content:'';
+    position:absolute; top:0; left:-20%;
+    width:20%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.9), transparent);
+    animation:sweep 2.8s linear infinite;
+  }
+  @keyframes sweep{ to { left:120%; } }
+  @media (prefers-reduced-motion:reduce){ .rail::after{ animation:none; } }
+
+  .top{ padding:40px 0 0; }
+  .status-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:var(--font-mono); font-size:11px; color:var(--text-dim);
+    letter-spacing:.03em; margin:18px 0;
+  }
+  .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--accent); margin-right:6px; animation:blink 1.6s ease-in-out infinite; }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+  @media (prefers-reduced-motion:reduce){ .dot{ animation:none; } }
+
+  .theme-btn{
+    background:var(--glass); border:1px solid var(--glass-brd); color:var(--text);
+    width:34px; height:34px; border-radius:50%; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center;
+    -webkit-backdrop-filter:blur(var(--glass-blur)); backdrop-filter:blur(var(--glass-blur));
+    transition:border-color .2s ease;
+  }
+  .theme-btn:hover{ border-color:var(--glass-hi); }
+  .theme-btn svg{ width:16px; height:16px; }
+
+  .hero{ padding:6px 22px 26px; margin-bottom:8px; }
+  .role{ color:var(--accent); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px; }
+  h1{ font-size:36px; line-height:1.1; letter-spacing:-0.01em; margin:0; }
+  .summary{ margin-top:14px; color:var(--text-mid); font-size:15.5px; line-height:1.65; max-width:56ch; }
+
+  .links{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
+  .links a{
+    font-size:12.5px; font-weight:500; color:var(--text); text-decoration:none;
+    border:1px solid var(--glass-brd); background:var(--glass); padding:7px 13px; border-radius:100px;
+    font-family:var(--font-mono);
+    -webkit-backdrop-filter:blur(var(--glass-blur)); backdrop-filter:blur(var(--glass-blur));
+    transition:all .18s ease;
+  }
+  .links a:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ============================================================
+   TABS
+   ============================================================ */
+  nav.tabs{ display:flex; gap:2px; margin-top:30px; border-bottom:1px solid var(--hairline); padding:0 4px; }
+  nav.tabs button{
+    font-family:var(--font-mono); font-size:13px; background:none; border:none;
+    padding:12px 4px; margin-right:26px; color:var(--text-dim); cursor:pointer;
+    border-bottom:2px solid transparent; position:relative; top:1px; transition:color .15s ease;
+  }
+  nav.tabs button .idx{ color:var(--accent); margin-right:6px; }
+  nav.tabs button.active{ color:var(--text); border-bottom-color:var(--accent); }
+  nav.tabs button:hover{ color:var(--text); }
+
+  /* ============================================================
+   CONTENT
+   ============================================================ */
+  main{ padding:30px 0 60px; }
+  .panel{ display:none; }
+  .panel.active{ display:block; }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .55s var(--ease), transform .55s var(--ease); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .lede{ font-size:16px; line-height:1.75; color:var(--text); max-width:58ch; margin:0 22px; }
+  .lede b{ font-weight:600; color:var(--text); }
+
+  h2.section-head{
+    font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--text-dim); margin:30px 22px 12px;
+  }
+
+  .entry{ padding:18px 20px; margin:0 6px 12px; }
+  .entry-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
+  .entry-title{ font-weight:600; font-size:15px; }
+  .entry-meta{ font-family:var(--font-mono); font-size:11px; color:var(--text-dim); white-space:nowrap; }
+  .entry-org{ color:var(--accent); font-size:13px; font-weight:500; margin-top:2px; }
+  .entry-desc{ margin-top:10px; color:var(--text-mid); font-size:14px; line-height:1.6; }
+
+  .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .tag{
+    font-family:var(--font-mono); font-size:10.5px; color:var(--text);
+    background:var(--accent-soft); border:1px solid var(--glass-brd); padding:3px 9px; border-radius:6px;
+  }
+
+  .skill-group{ margin:0 22px 18px; }
+  .skill-group .label{ font-size:10.5px; font-family:var(--font-mono); color:var(--text-dim); margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em; }
+
+  .proj{ padding:20px; margin:0 6px 14px; }
+  .proj-title{ font-weight:600; font-size:15.5px; }
+  .metric{
+    display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono);
+    font-size:11px; background:rgba(224,169,79,0.12); color:var(--pulse); border:1px solid rgba(224,169,79,0.3);
+    padding:3px 9px; border-radius:6px; margin-top:10px;
+  }
+  .metric .p-dot{ width:5px; height:5px; border-radius:50%; background:var(--pulse); }
+
+  footer{
+    border-top:1px solid var(--hairline); padding:20px 22px 44px; margin-top:10px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
+    font-family:var(--font-mono); font-size:11px; color:var(--text-dim);
+  }
+
+  @media (max-width:520px){
+    h1{ font-size:28px; }
+    nav.tabs button{ margin-right:16px; font-size:12px; }
+    .status-row{ flex-direction:column; gap:8px; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mesh"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+<div class="rail" id="rail"></div>
+
+<div class="wrap">
+  <div class="top">
+    <div class="status-row">
+      <span><span class="dot"></span>seattle, wa &middot; open to ai security &amp; backend roles</span>
+      <span style="display:flex; align-items:center; gap:12px;">
+        <span id="clock">render: &mdash;ms</span>
+        <button class="theme-btn" id="themeBtn" aria-label="Switch to light theme">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        </button>
+      </span>
+    </div>
+  </div>
+
+  <div class="hero glass">
+    <div class="role">Software Engineer &middot; Backend &amp; Infra</div>
+    <h1 class="display">Lily Oforiwa Sam</h1>
+    <p class="summary">3 years of software engineering experience building systems that move money in real time at Deutsche Bank. I have experience working across Kafka, GKE, and distributed backend Java microservices. Currently interested in open source work, AI safety and model calibration, and AI related research opportunities.</p>
+
+    <div class="links">
+      <a href="mailto:lilyoforiwaas@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/lily-oforiwaa-sam/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/oforiwaasam" target="_blank">GitHub</a>
+      <a href="#" target="_blank">Resume</a>
+    </div>
+  </div>
+
+  <div>
+    <nav class="tabs" role="tablist">
+      <button class="active" data-tab="me" role="tab" aria-selected="true"><span class="idx">01</span>Me</button>
+      <button data-tab="work" role="tab" aria-selected="false"><span class="idx">02</span>Experience</button>
+      <button data-tab="projects" role="tab" aria-selected="false"><span class="idx">03</span>Projects</button>
+    </nav>
+  </div>
+
+  <main>
+    <section class="panel active" id="panel-me">
+      <p class="lede reveal">I like problems where correctness and speed are both non-negotiable — <b>instant payment rails</b>, transaction processing, infrastructure that can't quietly fail. Most of my day-to-day is Java/Spring Boot and Python/FastAPI services running on GKE, with Kafka moving events between them and Terraform holding the environment together.</p>
+      <p class="lede reveal" style="margin-top:14px;">Outside of that, I've been pulled toward <b>AI security</b> — I took part in Deutsche Bank's Hack2Protect ethical hacking challenge, and built an independent calibration framework evaluating Llama-3.1-8B on the Spider text-to-SQL benchmark. I'm also working on a French learning app on the side, aimed at the TCF/TEF Canada exams.</p>
+
+      <h2 class="section-head reveal">Education</h2>
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Columbia University</div>
+            <div class="entry-org">BA, Computer Science</div>
+          </div>
+          <div class="entry-meta">2019 — 2023</div>
+        </div>
+        <div class="entry-desc">John W. Kluge Scholar &middot; TA for COMS 4111 (Databases)</div>
+      </div>
+    
+      <h2 class="section-head reveal">Skills</h2>
+      <div class="skill-group reveal">
+        <div class="label">Languages &amp; Frameworks</div>
+        <div class="tag-row">
+          <span class="tag">Java / Spring Boot</span><span class="tag">Python / FastAPI</span><span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="label">Infrastructure</div>
+        <div class="tag-row">
+          <span class="tag">Kafka</span><span class="tag">MongoDB</span><span class="tag">GKE / GCP</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="label">Emerging Focus</div>
+        <div class="tag-row">
+          <span class="tag">AI Security</span><span class="tag">Model Calibration</span><span class="tag">LLM Eval</span>
+        </div>
+      </div>
+    </section>
+    
+    <section class="panel" id="panel-work">
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Software Engineer</div>
+            <div class="entry-org">InvHup</div>
+          </div>
+          <div class="entry-meta">2026 — Present</div>
+        </div>
+        <div class="entry-desc">Backend and cloud infrastructure for real-time payment processing. Worked across several Java/Spring Boot microservices, Kafka event pipelines, MongoDB, deployed on GKE with Terraform-managed infra and GitHub Actions CI/CD.</div>
+        <div class="tag-row">
+          <span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">GKE</span>
+        </div>
+      </div>
+
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Software Engineer II</div>
+            <div class="entry-org">Deutsche Bank — Instant Payments</div>
+          </div>
+          <div class="entry-meta">2023 — 2026</div>
+        </div>
+        <div class="entry-desc">Backend and cloud infrastructure for real-time payment processing. Worked across several Java/Spring Boot microservices, Kafka event pipelines, MongoDB, deployed on GKE with Terraform-managed infra and GitHub Actions CI/CD.</div>
+        <div class="tag-row">
+          <span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">GKE</span>
+        </div>
+      </div>
+
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Software Engineering Intern</div>
+            <div class="entry-org">Amazon</div>
+          </div>
+          <div class="entry-meta">2022</div>
+        </div>
+        <div class="entry-desc">Add a line here on what you shipped or owned during the internship.</div>
+      </div>
+
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Teaching Assistant, COMS 4111</div>
+            <div class="entry-org">Columbia University — Graduate Databases Course</div>
+          </div>
+          <div class="entry-meta">2022 — 2023</div>
+        </div>
+        <div class="entry-desc">Supported graduate-level coursework in database systems.</div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-projects">
+      <div class="proj glass reveal">
+        <div class="proj-title">LLM Calibration on Text-to-SQL</div>
+        <div class="entry-desc">Independent framework evaluating Llama-3.1-8B on the Spider Text-to-SQL benchmark, measuring how well the model's confidence matches its actual accuracy — a core AI-security question for anything that lets a model act autonomously.</div>
+        <div class="metric"><span class="p-dot"></span>ECE: 0.2840</div>
+        <div class="tag-row">
+          <span class="tag">Llama-3.1-8B</span><span class="tag">Spider Benchmark</span><span class="tag">Groq API</span>
+        </div>
+      </div>
+
+      <div class="proj glass reveal">
+        <div class="proj-title">French Study App</div>
+        <div class="entry-desc">A spaced-practice app built for TCF Canada / TEF Canada prep, currently at B1 level material. FastAPI backend, React (Vite) frontend.</div>
+        <div class="tag-row">
+          <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Vite</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Lily Oforiwa Sam &middot; <span id="yr">©2026</span></span>
+      <span class="mono">hosted on GitHub Pages</span>
+    </footer>
+  </main>
+</div>
+
+<script>
+  (function(){
+  'use strict';
+
+  /* ---------- tabs ---------- */
+  var tabs = document.querySelectorAll('nav.tabs button');
+  var panels = { me:'panel-me', work:'panel-work', projects:'panel-projects' };
+  var railPct = { me:'12%', work:'50%', projects:'88%' };
+  var rail = document.getElementById('rail');
+
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+      Object.values(panels).forEach(function(id){ document.getElementById(id).classList.remove('active'); });
+      document.getElementById(panels[btn.dataset.tab]).classList.add('active');
+      rail.style.setProperty('--rail-pct', railPct[btn.dataset.tab]);
+      revealVisible();
+    });
+  });
+
+  /* ---------- theme (in-memory only, no storage APIs) ---------- */
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  var icon = document.getElementById('themeIcon');
+  var prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+  var theme = prefersLight.matches ? 'light' : 'dark';
+  var userChose = false;
+
+  var sunPath = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>';
+  var moonPath = '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path>';
+
+  function apply(t){
+    theme = t;
+    root.setAttribute('data-theme', t);
+    icon.innerHTML = t === 'dark' ? sunPath : moonPath;
+    btn.setAttribute('aria-label', 'Switch to ' + (t === 'dark' ? 'light' : 'dark') + ' theme');
+  }
+  apply(theme);
+
+  btn.addEventListener('click', function(){
+    userChose = true;
+    apply(theme === 'dark' ? 'light' : 'dark');
+  });
+
+  prefersLight.addEventListener('change', function(e){
+    if (!userChose) apply(e.matches ? 'light' : 'dark');
+  });
+
+  /* ---------- render-latency ticker ---------- */
+  var clock = document.getElementById('clock');
+  function tick(){
+    var ms = (Math.random() * 8 + 11).toFixed(1);
+    clock.textContent = 'render: ' + ms + 'ms';
+  }
+  tick();
+  setInterval(tick, 2200);
+
+  /* ---------- scroll reveal ---------- */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function revealVisible(){
+    var items = document.querySelectorAll('.panel.active .reveal:not(.in)');
+    if (reduced || !('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { rootMargin:'0px 0px -6% 0px', threshold:0.08 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+  revealVisible();
+
+  /* ---------- footer year ---------- */
+  document.getElementById('yr').textContent = '© ' + new Date().getFullYear();
+})();
+</script>
+
+</body>
 </html>
