@@ -1,38 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lily — Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #F2F4F8;
-    --panel: #FFFFFF;
-    --ink: #12141C;
-    --ink-soft: #5B6272;
-    --line: #DADFE8;
-    --accent: #2F5DFF;
-    --accent-soft: #E7ECFF;
-    --pulse: #D98E2B;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .mono{ font-family:'JetBrains Mono', monospace; }
-  .display{ font-family:'Space Grotesk', sans-serif; }
 
-  .rail{
-    height:3px;
-    width:100%;
-    background:linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--rail-pct,38%), var(--line) var(--rail-pct,38%), var(--line) 100%);
+<style>
+  /* ============================================================
+   THEME TOKENS
+   ============================================================ */
+  :root{
+    --font-sans:'Inter', system-ui, sans-serif;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+
+    --maxw: 720px;
+    --radius: 14px;
+    --gutter: clamp(1.1rem, 5vw, 2rem);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --glass-blur: 18px;
+  }
+
+  [data-theme="dark"]{
+  --bg:        #0a0d14;
+  --bg-deep:   #060810;
+  --text:      #e9edf5;
+  --text-mid:  #9aa4b8;
+  --text-dim:  #6b7488;
+
+  --accent:      #6f9bff;
+  --accent-soft: rgba(111,155,255,0.14);
+  --pulse:       #e0a94f;
+
+  --glass:       rgba(255,255,255,0.045);
+  --glass-brd:   rgba(255,255,255,0.10);
+  --glass-hi:    rgba(255,255,255,0.20);
+  --hairline:    rgba(255,255,255,0.08);
+  --shadow:      0 1px 1px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.45);
+  --scrim:       rgba(10,13,20,0.7);
+  } 
+
+  [data-theme="light"]{
+  --bg:        #f2f4f8;
+  --bg-deep:   #e7eaf1;
+  --text:      #12141c;
+  --text-mid:  #5b6272;
+  --text-dim:  #7b8296;
+
+  --accent:      #2f5dff;
+  --accent-soft: #e7ecff;
+  --pulse:       #b3760f;
+
+  --glass:       rgba(255,255,255,0.6);
+  --glass-brd:   rgba(20,22,30,0.10);
+  --glass-hi:    rgba(255,255,255,0.85);
+  --hairline:    rgba(20,22,30,0.08);
+  --shadow:      0 1px 1px rgba(20,22,30,.05), 0 12px 32px rgba(20,22,30,.08);
+  --scrim:       rgba(242,244,248,0.75);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  /* *{box-sizing:border-box; margin:0; padding:0;} */
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--font-sans); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background-color .35s var(--ease), color .35s var(--ease);
+  }
+  .mono{ font-family:var(--font-mono); }
+  .display{ font-family:var(--font-display); }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+
+  .wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+
+  /* ============================================================
+   AMBIENT MESH BACKGROUND
+   ============================================================ */
+  .mesh{ position:fixed; inset:0; z-index:-1; overflow:hidden; background:var(--bg-deep); }
+  .mesh span{ position:absolute; display:block; border-radius:50%; filter:blur(80px); will-change:transform; }
+  .mesh .b1{ width:44vw; height:44vw; top:-14vw; left:-8vw; background:var(--accent); opacity:.18; animation:float1 28s var(--ease) infinite alternate; }
+  .mesh .b2{ width:36vw; height:36vw; top:30vh; right:-10vw; background:#3ddad0; opacity:.12; animation:float2 34s var(--ease) infinite alternate; }
+  .mesh .b3{ width:40vw; height:40vw; bottom:-16vw; left:20vw; background:#8b7cf6; opacity:.10; animation:float3 40s var(--ease) infinite alternate; }
+  [data-theme="light"] .mesh .b1{ opacity:.20; }
+  [data-theme="light"] .mesh .b2{ opacity:.14; }
+  [data-theme="light"] .mesh .b3{ opacity:.12; }
+
+  @keyframes float1{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(6vw,5vh,0) scale(1.15);} }
+  @keyframes float2{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(-7vw,-6vh,0) scale(1.1);} }
+  @keyframes float3{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(4vw,-7vh,0) scale(1.18);} }
+
+  .mesh::after{
+    content:''; position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, var(--hairline) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--hairline) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(120% 90% at 50% 0%, #000 20%, transparent 78%);
+    -webkit-mask-image:radial-gradient(120% 90% at 50% 0%, #000 20%, transparent 78%);
+    opacity:.5;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .mesh span{ animation:none; }
+  }
+
+  /* ============================================================
+   GLASS PRIMITIVE
+   ============================================================ */
+  .glass{
     position:relative;
-    overflow:hidden;
+    background:var(--glass);
+    border:1px solid var(--glass-brd);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(160%);
+    backdrop-filter:blur(var(--glass-blur)) saturate(160%);
+  }
+  .glass::before{
+    content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none;
+    background:linear-gradient(160deg, var(--glass-hi), transparent 45%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:.8;
+  }
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .glass{ background:var(--bg-deep); }
+  }
+
+  /* ============================================================
+   HEADER
+   ============================================================ */
+  .rail{
+    height:3px; width:100%;
+    background:linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--rail-pct,12%), var(--hairline) var(--rail-pct,12%), var(--hairline) 100%);
+    position:relative; overflow:hidden;
+    transition:background .4s ease;
   }
   .rail::after{
     content:'';
@@ -42,117 +150,135 @@
     animation:sweep 2.8s linear infinite;
   }
   @keyframes sweep{ to { left:120%; } }
+  @media (prefers-reduced-motion:reduce){ .rail::after{ animation:none; } }
 
-  .wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
-
-  header.top{ padding:40px 0 24px; }
+  .top{ padding:40px 0 0; }
   .status-row{
     display:flex; justify-content:space-between; align-items:baseline;
-    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft);
-    letter-spacing:.03em; margin-bottom:18px;
+    font-family:var(--font-mono); font-size:11px; color:var(--text-dim);
+    letter-spacing:.03em; margin:18px 0;
   }
   .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--accent); margin-right:6px; animation:blink 1.6s ease-in-out infinite; }
   @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+  @media (prefers-reduced-motion:reduce){ .dot{ animation:none; } }
 
-  h1{ font-size:38px; line-height:1.1; letter-spacing:-0.01em; }
-  .role{ color:var(--accent); font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px; }
-  .summary{ margin-top:16px; color:var(--ink-soft); font-size:15.5px; line-height:1.65; max-width:58ch; }
+  .theme-btn{
+    background:var(--glass); border:1px solid var(--glass-brd); color:var(--text);
+    width:34px; height:34px; border-radius:50%; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center;
+    -webkit-backdrop-filter:blur(var(--glass-blur)); backdrop-filter:blur(var(--glass-blur));
+    transition:border-color .2s ease;
+  }
+  .theme-btn:hover{ border-color:var(--glass-hi); }
+  .theme-btn svg{ width:16px; height:16px; }
 
-  .links{ display:flex; gap:14px; margin-top:22px; flex-wrap:wrap; }
+  .hero{ padding:6px 22px 26px; margin-bottom:8px; }
+  .role{ color:var(--accent); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px; }
+  h1{ font-size:36px; line-height:1.1; letter-spacing:-0.01em; margin:0; }
+  .summary{ margin-top:14px; color:var(--text-mid); font-size:15.5px; line-height:1.65; max-width:56ch; }
+
+  .links{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
   .links a{
-    font-size:13px; font-weight:500; color:var(--ink); text-decoration:none;
-    border:1px solid var(--line); padding:7px 14px; border-radius:100px;
-    transition:all .15s ease; font-family:'JetBrains Mono',monospace;
+    font-size:12.5px; font-weight:500; color:var(--text); text-decoration:none;
+    border:1px solid var(--glass-brd); background:var(--glass); padding:7px 13px; border-radius:100px;
+    font-family:var(--font-mono);
+    -webkit-backdrop-filter:blur(var(--glass-blur)); backdrop-filter:blur(var(--glass-blur));
+    transition:all .18s ease;
   }
-  .links a:hover, .links a:focus-visible{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .links a:hover{ border-color:var(--accent); color:var(--accent); }
 
-  nav.tabs{
-    display:flex; gap:2px; margin-top:36px; border-bottom:1px solid var(--line);
-  }
+  /* ============================================================
+   TABS
+   ============================================================ */
+  nav.tabs{ display:flex; gap:2px; margin-top:30px; border-bottom:1px solid var(--hairline); padding:0 4px; }
   nav.tabs button{
-    font-family:'JetBrains Mono', monospace; font-size:13px; background:none; border:none;
-    padding:12px 4px; margin-right:28px; color:var(--ink-soft); cursor:pointer;
-    border-bottom:2px solid transparent; position:relative; top:1px;
-    transition:color .15s ease;
+    font-family:var(--font-mono); font-size:13px; background:none; border:none;
+    padding:12px 4px; margin-right:26px; color:var(--text-dim); cursor:pointer;
+    border-bottom:2px solid transparent; position:relative; top:1px; transition:color .15s ease;
   }
   nav.tabs button .idx{ color:var(--accent); margin-right:6px; }
-  nav.tabs button.active{ color:var(--ink); border-bottom-color:var(--accent); }
-  nav.tabs button:hover{ color:var(--ink); }
-  nav.tabs button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  nav.tabs button.active{ color:var(--text); border-bottom-color:var(--accent); }
+  nav.tabs button:hover{ color:var(--text); }
 
-  section.panel{ padding:34px 0 80px; display:none; }
-  section.panel.active{ display:block; animation:fadeUp .35s ease; }
-  @keyframes fadeUp{ from{ opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+  /* ============================================================
+   CONTENT
+   ============================================================ */
+  main{ padding:30px 0 60px; }
+  .panel{ display:none; }
+  .panel.active{ display:block; }
 
-  .lede{ font-size:16px; line-height:1.75; color:var(--ink); max-width:60ch; }
-  .lede b{ font-weight:600; }
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .55s var(--ease), transform .55s var(--ease); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .lede{ font-size:16px; line-height:1.75; color:var(--text); max-width:58ch; margin:0 22px; }
+  .lede b{ font-weight:600; color:var(--text); }
 
   h2.section-head{
-    font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase;
-    letter-spacing:.1em; color:var(--ink-soft); margin:32px 0 14px;
+    font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--text-dim); margin:30px 22px 12px;
   }
 
-  .entry{
-    border:1px solid var(--line); background:var(--panel); border-radius:10px;
-    padding:18px 20px; margin-bottom:12px;
-  }
+  .entry{ padding:18px 20px; margin:0 6px 12px; }
   .entry-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
   .entry-title{ font-weight:600; font-size:15px; }
-  .entry-meta{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--ink-soft); white-space:nowrap; }
+  .entry-meta{ font-family:var(--font-mono); font-size:11px; color:var(--text-dim); white-space:nowrap; }
   .entry-org{ color:var(--accent); font-size:13px; font-weight:500; margin-top:2px; }
-  .entry-desc{ margin-top:10px; color:var(--ink-soft); font-size:14px; line-height:1.6; }
+  .entry-desc{ margin-top:10px; color:var(--text-mid); font-size:14px; line-height:1.6; }
 
   .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
   .tag{
-    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink);
-    background:var(--accent-soft); border:1px solid #D3DEFF; padding:3px 9px; border-radius:6px;
+    font-family:var(--font-mono); font-size:10.5px; color:var(--text);
+    background:var(--accent-soft); border:1px solid var(--glass-brd); padding:3px 9px; border-radius:6px;
   }
 
-  .skill-group{ margin-bottom:18px; }
-  .skill-group .label{ font-size:11px; font-family:'JetBrains Mono', monospace; color:var(--ink-soft); margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em; }
+  .skill-group{ margin:0 22px 18px; }
+  .skill-group .label{ font-size:10.5px; font-family:var(--font-mono); color:var(--text-dim); margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em; }
 
-  .proj{ border:1px solid var(--line); background:var(--panel); border-radius:10px; padding:20px; margin-bottom:14px; }
-  .proj-title{ font-weight:600; font-size:15.5px; display:flex; align-items:center; gap:8px; }
+  .proj{ padding:20px; margin:0 6px 14px; }
+  .proj-title{ font-weight:600; font-size:15.5px; }
   .metric{
-    display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono', monospace;
-    font-size:11.5px; background:#FBF3E7; color:#8A5A0F; border:1px solid #F0DDB8;
+    display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono);
+    font-size:11px; background:rgba(224,169,79,0.12); color:var(--pulse); border:1px solid rgba(224,169,79,0.3);
     padding:3px 9px; border-radius:6px; margin-top:10px;
   }
-  .metric .p-dot{ width:5px;height:5px;border-radius:50%; background:var(--pulse); }
+  .metric .p-dot{ width:5px; height:5px; border-radius:50%; background:var(--pulse); }
 
   footer{
-    border-top:1px solid var(--line); padding:22px 0 40px; margin-top:20px;
-    display:flex; justify-content:space-between; align-items:center;
-    font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--ink-soft);
+    border-top:1px solid var(--hairline); padding:20px 22px 44px; margin-top:10px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
+    font-family:var(--font-mono); font-size:11px; color:var(--text-dim);
   }
 
   @media (max-width:520px){
-    h1{ font-size:30px; }
+    h1{ font-size:28px; }
     nav.tabs button{ margin-right:16px; font-size:12px; }
-    .status-row{ flex-direction:column; gap:4px; align-items:flex-start; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .rail::after{ animation:none; }
-    .dot{ animation:none; }
-    section.panel.active{ animation:none; }
+    .status-row{ flex-direction:column; gap:8px; align-items:flex-start; }
   }
 </style>
 </head>
 <body>
 
+<div class="mesh"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
 <div class="rail" id="rail"></div>
 
 <div class="wrap">
-  <header class="top">
+  <div class="top">
     <div class="status-row">
-      <span><span class="dot"></span>seattle, wa · open to ai security &amp; backend roles</span>
-      <span id="clock">render: —ms</span>
+      <span><span class="dot"></span>seattle, wa &middot; open to ai security &amp; backend roles</span>
+      <span style="display:flex; align-items:center; gap:12px;">
+        <span id="clock">render: &mdash;ms</span>
+        <button class="theme-btn" id="themeBtn" aria-label="Switch to light theme">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        </button>
+      </span>
     </div>
+  </div>
 
-    <div class="role">Software Engineer · Backend &amp; Infra</div>
+  <div class="hero glass">
+    <div class="role">Software Engineer &middot; Backend &amp; Infra</div>
     <h1 class="display">Lily Oforiwa Sam</h1>
-    <p class="summary">Building the systems that move money in real time — currently on Deutsche Bank's Instant Payments team, working across Kafka, GKE, and distributed backend services. Columbia CS. Increasingly focused on where reliability meets AI security.</p>
+    <p class="summary">3 years of software engineering experience building systems that move money in real time at Deutsche Bank. I have experience working across Kafka, GKE, and distributed backend Java microservices. Currently interested in open source work, AI safety and model calibration, and AI related research opportunities.</p>
 
     <div class="links">
       <a href="mailto:lilyoforiwaas@gmail.com">Email</a>
@@ -160,141 +286,210 @@
       <a href="https://github.com/oforiwaasam" target="_blank">GitHub</a>
       <a href="#" target="_blank">Resume</a>
     </div>
+  </div>
 
+  <div>
     <nav class="tabs" role="tablist">
       <button class="active" data-tab="me" role="tab" aria-selected="true"><span class="idx">01</span>Me</button>
       <button data-tab="work" role="tab" aria-selected="false"><span class="idx">02</span>Experience</button>
       <button data-tab="projects" role="tab" aria-selected="false"><span class="idx">03</span>Projects</button>
     </nav>
-  </header>
+  </div>
 
-  <section class="panel active" id="panel-me">
-    <p class="lede">I like problems where correctness and speed are both non-negotiable — <b>instant payment rails</b>, transaction processing, infrastructure that can't quietly fail. Most of my day-to-day is Java/Spring Boot and Python/FastAPI services running on GKE, with Kafka moving events between them and Terraform holding the environment together.</p>
-    <p class="lede" style="margin-top:14px;">Outside of that, I've been pulled toward <b>AI security</b> — I took part in Deutsche Bank's Hack2Protect ethical hacking challenge, and built an independent calibration framework evaluating Llama-3.1-8B on the Spider text-to-SQL benchmark. I'm also working on a French learning app on the side, aimed at the TCF/TEF Canada exams.</p>
+  <main>
+    <section class="panel active" id="panel-me">
+      <p class="lede reveal">I like problems where correctness and speed are both non-negotiable — <b>instant payment rails</b>, transaction processing, infrastructure that can't quietly fail. Most of my day-to-day is Java/Spring Boot and Python/FastAPI services running on GKE, with Kafka moving events between them and Terraform holding the environment together.</p>
+      <p class="lede reveal" style="margin-top:14px;">Outside of that, I've been pulled toward <b>AI security</b> — I took part in Deutsche Bank's Hack2Protect ethical hacking challenge, and built an independent calibration framework evaluating Llama-3.1-8B on the Spider text-to-SQL benchmark. I'm also working on a French learning app on the side, aimed at the TCF/TEF Canada exams.</p>
 
-    <h2 class="section-head">Education</h2>
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <div class="entry-title">Columbia University</div>
-          <div class="entry-org">BA, Computer Science</div>
+      <h2 class="section-head reveal">Education</h2>
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Columbia University</div>
+            <div class="entry-org">BA, Computer Science</div>
+          </div>
+          <div class="entry-meta">2019 — 2023</div>
         </div>
-        <div class="entry-meta">2019 — 2023</div>
+        <div class="entry-desc">John W. Kluge Scholar &middot; TA for COMS 4111 (Databases)</div>
       </div>
-      <div class="entry-desc">John W. Kluge Scholar · TA for COMS 4111 (Databases)</div>
-    </div>
-
-    <h2 class="section-head">Skills</h2>
-    <div class="skill-group">
-      <div class="label">Languages &amp; Frameworks</div>
-      <div class="tag-row">
-        <span class="tag">Java / Spring Boot</span><span class="tag">Python / FastAPI</span><span class="tag">SQL</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="label">Infrastructure</div>
-      <div class="tag-row">
-        <span class="tag">Kafka</span><span class="tag">MongoDB</span><span class="tag">GKE / GCP</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="label">Emerging Focus</div>
-      <div class="tag-row">
-        <span class="tag">AI Security</span><span class="tag">Model Calibration</span><span class="tag">LLM Eval</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-work">
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <div class="entry-title">Software Engineer II</div>
-          <div class="entry-org">Deutsche Bank — Instant Payments</div>
+    
+      <h2 class="section-head reveal">Skills</h2>
+      <div class="skill-group reveal">
+        <div class="label">Languages &amp; Frameworks</div>
+        <div class="tag-row">
+          <span class="tag">Java / Spring Boot</span><span class="tag">Python / FastAPI</span><span class="tag">SQL</span>
         </div>
-        <div class="entry-meta">2023 — Present</div>
       </div>
-      <div class="entry-desc">Backend and cloud infrastructure for real-time payment processing. Java/Spring Boot and Python/FastAPI services, Kafka event pipelines, MongoDB, deployed on GKE with Terraform-managed infra and GitHub Actions CI/CD.</div>
-      <div class="tag-row">
-        <span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">GKE</span>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <div class="entry-title">Software Engineering Intern</div>
-          <div class="entry-org">Amazon</div>
+      <div class="skill-group reveal">
+        <div class="label">Infrastructure</div>
+        <div class="tag-row">
+          <span class="tag">Kafka</span><span class="tag">MongoDB</span><span class="tag">GKE / GCP</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span>
         </div>
-        <div class="entry-meta">2022</div>
       </div>
-      <div class="entry-desc">Add a line here on what you shipped or owned during the internship.</div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <div class="entry-title">Teaching Assistant, COMS 4111</div>
-          <div class="entry-org">Columbia University — Graduate Databases</div>
+      <div class="skill-group reveal">
+        <div class="label">Emerging Focus</div>
+        <div class="tag-row">
+          <span class="tag">AI Security</span><span class="tag">Model Calibration</span><span class="tag">LLM Eval</span>
         </div>
-        <div class="entry-meta">2022 — 2023</div>
       </div>
-      <div class="entry-desc">Supported graduate-level coursework in database systems.</div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-projects">
-    <div class="proj">
-      <div class="proj-title">LLM Calibration on Text-to-SQL</div>
-      <div class="entry-desc">Independent framework evaluating Llama-3.1-8B on the Spider Text-to-SQL benchmark, measuring how well the model's confidence matches its actual accuracy — a core AI-security question for anything that lets a model act autonomously.</div>
-      <div class="metric"><span class="p-dot"></span>ECE: 0.2840</div>
-      <div class="tag-row">
-        <span class="tag">Llama-3.1-8B</span><span class="tag">Spider Benchmark</span><span class="tag">Groq API</span>
+    </section>
+    
+    <section class="panel" id="panel-work">
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Software Engineer</div>
+            <div class="entry-org">InvHup</div>
+          </div>
+          <div class="entry-meta">2026 — Present</div>
+        </div>
+        <div class="entry-desc">Backend and cloud infrastructure for real-time payment processing. Worked across several Java/Spring Boot microservices, Kafka event pipelines, MongoDB, deployed on GKE with Terraform-managed infra and GitHub Actions CI/CD.</div>
+        <div class="tag-row">
+          <span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">GKE</span>
+        </div>
       </div>
-    </div>
 
-    <div class="proj">
-      <div class="proj-title">French Study App</div>
-      <div class="entry-desc">A spaced-practice app built for TCF Canada / TEF Canada prep, currently at B1 level material. FastAPI backend, React (Vite) frontend.</div>
-      <div class="tag-row">
-        <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Vite</span>
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Software Engineer II</div>
+            <div class="entry-org">Deutsche Bank — Instant Payments</div>
+          </div>
+          <div class="entry-meta">2023 — 2026</div>
+        </div>
+        <div class="entry-desc">Backend and cloud infrastructure for real-time payment processing. Worked across several Java/Spring Boot microservices, Kafka event pipelines, MongoDB, deployed on GKE with Terraform-managed infra and GitHub Actions CI/CD.</div>
+        <div class="tag-row">
+          <span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">GKE</span>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <footer>
-    <span>Lily Oforiwa Sam · 2026</span>
-    <span>lilyoforiwaas@gmail.com</span>
-  </footer>
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Software Engineering Intern</div>
+            <div class="entry-org">Amazon</div>
+          </div>
+          <div class="entry-meta">2022</div>
+        </div>
+        <div class="entry-desc">Add a line here on what you shipped or owned during the internship.</div>
+      </div>
+
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Teaching Assistant, COMS 4111</div>
+            <div class="entry-org">Columbia University — Graduate Databases Course</div>
+          </div>
+          <div class="entry-meta">2022 — 2023</div>
+        </div>
+        <div class="entry-desc">Supported graduate-level coursework in database systems.</div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-projects">
+      <div class="proj glass reveal">
+        <div class="proj-title">LLM Calibration on Text-to-SQL</div>
+        <div class="entry-desc">Independent framework evaluating Llama-3.1-8B on the Spider Text-to-SQL benchmark, measuring how well the model's confidence matches its actual accuracy — a core AI-security question for anything that lets a model act autonomously.</div>
+        <div class="metric"><span class="p-dot"></span>ECE: 0.2840</div>
+        <div class="tag-row">
+          <span class="tag">Llama-3.1-8B</span><span class="tag">Spider Benchmark</span><span class="tag">Groq API</span>
+        </div>
+      </div>
+
+      <div class="proj glass reveal">
+        <div class="proj-title">French Study App</div>
+        <div class="entry-desc">A spaced-practice app built for TCF Canada / TEF Canada prep, currently at B1 level material. FastAPI backend, React (Vite) frontend.</div>
+        <div class="tag-row">
+          <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Vite</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Lily Oforiwa Sam &middot; <span id="yr">©2026</span></span>
+      <span class="mono">hosted on GitHub Pages</span>
+    </footer>
+  </main>
 </div>
 
 <script>
-  const tabs = document.querySelectorAll('nav.tabs button');
-  const panels = { me:'panel-me', work:'panel-work', projects:'panel-projects' };
-  tabs.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      tabs.forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  (function(){
+  'use strict';
+
+  /* ---------- tabs ---------- */
+  var tabs = document.querySelectorAll('nav.tabs button');
+  var panels = { me:'panel-me', work:'panel-work', projects:'panel-projects' };
+  var railPct = { me:'12%', work:'50%', projects:'88%' };
+  var rail = document.getElementById('rail');
+
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
       btn.classList.add('active'); btn.setAttribute('aria-selected','true');
-      Object.values(panels).forEach(id=> document.getElementById(id).classList.remove('active'));
+      Object.values(panels).forEach(function(id){ document.getElementById(id).classList.remove('active'); });
       document.getElementById(panels[btn.dataset.tab]).classList.add('active');
+      rail.style.setProperty('--rail-pct', railPct[btn.dataset.tab]);
+      revealVisible();
     });
   });
 
-  // playful "render latency" readout — a nod to instant-payments work
-  const clock = document.getElementById('clock');
+  /* ---------- theme (in-memory only, no storage APIs) ---------- */
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  var icon = document.getElementById('themeIcon');
+  var prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+  var theme = prefersLight.matches ? 'light' : 'dark';
+  var userChose = false;
+
+  var sunPath = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>';
+  var moonPath = '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path>';
+
+  function apply(t){
+    theme = t;
+    root.setAttribute('data-theme', t);
+    icon.innerHTML = t === 'dark' ? sunPath : moonPath;
+    btn.setAttribute('aria-label', 'Switch to ' + (t === 'dark' ? 'light' : 'dark') + ' theme');
+  }
+  apply(theme);
+
+  btn.addEventListener('click', function(){
+    userChose = true;
+    apply(theme === 'dark' ? 'light' : 'dark');
+  });
+
+  prefersLight.addEventListener('change', function(e){
+    if (!userChose) apply(e.matches ? 'light' : 'dark');
+  });
+
+  /* ---------- render-latency ticker ---------- */
+  var clock = document.getElementById('clock');
   function tick(){
-    const ms = (Math.random()*8 + 11).toFixed(1);
+    var ms = (Math.random() * 8 + 11).toFixed(1);
     clock.textContent = 'render: ' + ms + 'ms';
   }
   tick();
   setInterval(tick, 2200);
 
-  // rail fill reflects active tab index, just for visual rhythm
-  const rail = document.getElementById('rail');
-  const pct = { me:'12%', work:'50%', projects:'88%' };
-  tabs.forEach(btn=>{
-    btn.addEventListener('click', ()=> rail.style.setProperty('--rail-pct', pct[btn.dataset.tab]));
-  });
+  /* ---------- scroll reveal ---------- */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function revealVisible(){
+    var items = document.querySelectorAll('.panel.active .reveal:not(.in)');
+    if (reduced || !('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { rootMargin:'0px 0px -6% 0px', threshold:0.08 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+  revealVisible();
+
+  /* ---------- footer year ---------- */
+  document.getElementById('yr').textContent = '© ' + new Date().getFullYear();
+})();
 </script>
 
 </body>
