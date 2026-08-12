@@ -210,7 +210,7 @@
   .reveal{ opacity:0; transform:translateY(14px); transition:opacity .55s var(--ease), transform .55s var(--ease); }
   .reveal.in{ opacity:1; transform:translateY(0); }
 
-  .lede{ font-size:16px; line-height:1.75; color:var(--text); max-width:58ch; margin:0 22px; }
+  .lede{ font-size:14px; line-height:1.75; color:var(--text); max-width:58ch; margin:0 22px; }
   .lede b{ font-weight:600; color:var(--text); }
 
   h2.section-head{
@@ -225,6 +225,27 @@
   .entry-org{ color:var(--accent); font-size:13px; font-weight:500; margin-top:2px; }
   .entry-desc{ margin-top:10px; color:var(--text-mid); font-size:14px; line-height:1.6; }
 
+  .roadmap{ list-style:none; margin:14px 0 2px; padding:0; }
+  .roadmap li{
+    position:relative; padding:0 0 16px 20px; border-left:1px solid var(--hairline);
+  }
+  .roadmap li:last-child{ padding-bottom:0; border-left-color:transparent; }
+  .roadmap li::before{
+    content:''; position:absolute; left:-4.5px; top:2px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--bg); border:1.5px solid var(--accent);
+  }
+  .roadmap li.is-current::before{ background:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  .roadmap .rm-row{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .roadmap .rm-title{ font-size:13.5px; font-weight:600; color:var(--text); }
+  .roadmap .rm-date{
+    font-family:var(--font-mono); font-size:10.5px; color:var(--text-dim);
+    white-space:nowrap; letter-spacing:.02em;
+  }
+  .roadmap .rm-desc{
+    margin-top:5px; font-size:12.5px; line-height:1.55; color:var(--text-mid); max-width:60ch;
+  }
+
   .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
   .tag{
     font-family:var(--font-mono); font-size:10.5px; color:var(--text);
@@ -234,8 +255,17 @@
   .skill-group{ margin:0 22px 18px; }
   .skill-group .label{ font-size:10.5px; font-family:var(--font-mono); color:var(--text-dim); margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em; }
 
-  .proj{ padding:20px; margin:0 6px 14px; }
-  .proj-title{ font-weight:600; font-size:15.5px; }
+  .proj{
+    padding:20px; margin:0 6px 14px; display:block; position:relative;
+    text-decoration:none; color:inherit; transition:border-color .2s ease, transform .2s ease;
+  }
+  .proj:hover, .proj:focus-visible{ border-color:var(--glass-hi); transform:translateY(-2px); }
+  .proj-title{ font-weight:600; font-size:15.5px; padding-right:26px; }
+  .proj-arrow{
+    position:absolute; top:18px; right:18px; width:15px; height:15px;
+    color:var(--text-dim); transition:color .2s ease, transform .2s ease;
+  }
+  .proj:hover .proj-arrow, .proj:focus-visible .proj-arrow{ color:var(--accent); transform:translate(2px,-2px); }
   .metric{
     display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono);
     font-size:11px; background:rgba(224,169,79,0.12); color:var(--pulse); border:1px solid rgba(224,169,79,0.3);
@@ -248,6 +278,13 @@
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
     font-family:var(--font-mono); font-size:11px; color:var(--text-dim);
   }
+  .footer-icon{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:28px; height:28px; border-radius:50%; color:var(--text-dim);
+    border:1px solid var(--glass-brd); transition:color .2s ease, border-color .2s ease;
+  }
+  .footer-icon:hover, .footer-icon:focus-visible{ color:var(--accent); border-color:var(--accent); }
+  .footer-icon svg{ width:14px; height:14px; }
 
   @media (max-width:520px){
     h1{ font-size:28px; }
@@ -265,7 +302,7 @@
 <div class="wrap">
   <div class="top">
     <div class="status-row">
-      <span><span class="dot"></span>seattle, wa &middot; open to ai security &amp; backend roles</span>
+      <span><span class="dot"></span>seattle, wa</span>
       <span style="display:flex; align-items:center; gap:12px;">
         <span id="clock">render: &mdash;ms</span>
         <button class="theme-btn" id="themeBtn" aria-label="Switch to light theme">
@@ -278,7 +315,7 @@
   <div class="hero glass">
     <div class="role">Software Engineer &middot; Backend &amp; Infra</div>
     <h1 class="display">Lily Oforiwa Sam</h1>
-    <p class="summary">3 years of software engineering experience building systems that move money in real time at Deutsche Bank. I have experience working across Kafka, GKE, and distributed backend Java microservices. Currently interested in open source work, AI safety and model calibration, and AI related research opportunities.</p>
+    <p class="summary">Software engineer with 3 years of experience building backend systems that move money in real time at Deutsche Bank. Lately, I've been pulled toward AI safety and model calibration, and I've been contributing to open source projects in the side.</p>
 
     <div class="links">
       <a href="mailto:lilyoforiwaas@gmail.com">Email</a>
@@ -290,7 +327,7 @@
 
   <div>
     <nav class="tabs" role="tablist">
-      <button class="active" data-tab="me" role="tab" aria-selected="true"><span class="idx">01</span>Me</button>
+      <button class="active" data-tab="me" role="tab" aria-selected="true"><span class="idx">01</span>About Me</button>
       <button data-tab="work" role="tab" aria-selected="false"><span class="idx">02</span>Experience</button>
       <button data-tab="projects" role="tab" aria-selected="false"><span class="idx">03</span>Projects</button>
     </nav>
@@ -298,8 +335,8 @@
 
   <main>
     <section class="panel active" id="panel-me">
-      <p class="lede reveal">I like problems where correctness and speed are both non-negotiable — <b>instant payment rails</b>, transaction processing, infrastructure that can't quietly fail. Most of my day-to-day is Java/Spring Boot and Python/FastAPI services running on GKE, with Kafka moving events between them and Terraform holding the environment together.</p>
-      <p class="lede reveal" style="margin-top:14px;">Outside of that, I've been pulled toward <b>AI security</b> — I took part in Deutsche Bank's Hack2Protect ethical hacking challenge, and built an independent calibration framework evaluating Llama-3.1-8B on the Spider text-to-SQL benchmark. I'm also working on a French learning app on the side, aimed at the TCF/TEF Canada exams.</p>
+      <p class="lede reveal">I was born and raised in Ghana, and I'm currently based in the US. I'm an enthusiastic, goal-oriented software engineer with a passion for building robust solutions. I'm passionate about teaching and mentoring others and I'm always looking for opportunities to learn and grow as a developer, so I consider myself a <b>lifelong learner</b>.</p>
+      <p class="lede reveal" style="margin-top:14px;">My 3 years of software engineering experience spans across various domains: backend development, frontend development, and infrastructure. The nature of my work at Deutsche Bank led me to develop an interest in <b>AI safety and overconfidence</b>, and I've recently built an independent calibration framework evaluating Llama-3.1-8B and other models on the <b>Spider</b> text-to-SQL benchmark.</p>
 
       <h2 class="section-head reveal">Education</h2>
       <div class="entry glass reveal">
@@ -308,20 +345,20 @@
             <div class="entry-title">Columbia University</div>
             <div class="entry-org">BA, Computer Science</div>
           </div>
-          <div class="entry-meta">2019 — 2023</div>
+          <div class="entry-meta">Aug 2019 — May 2023</div>
         </div>
-        <div class="entry-desc">John W. Kluge Scholar &middot; TA for COMS 4111 (Databases)</div>
+        <div class="entry-desc">John W. Kluge Scholar &middot; TA for COMS 4111 (Databases) &middot; 2x Dean's List</div>
       </div>
     
       <h2 class="section-head reveal">Skills</h2>
       <div class="skill-group reveal">
         <div class="label">Languages &amp; Frameworks</div>
         <div class="tag-row">
-          <span class="tag">Java / Spring Boot</span><span class="tag">Python / FastAPI</span><span class="tag">SQL</span>
+          <span class="tag">Java / Spring Boot</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Flask</span>
         </div>
       </div>
       <div class="skill-group reveal">
-        <div class="label">Infrastructure</div>
+        <div class="label">Databases &amp; Infrastructure</div>
         <div class="tag-row">
           <span class="tag">Kafka</span><span class="tag">MongoDB</span><span class="tag">GKE / GCP</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span>
         </div>
@@ -338,10 +375,10 @@
       <div class="entry glass reveal">
         <div class="entry-top">
           <div>
-            <div class="entry-title">Software Engineer</div>
-            <div class="entry-org">InvHup</div>
+            <div class="entry-title">Lead Software Engineer</div>
+            <div class="entry-org">Stealth Startup based in Francophone Africa</div>
           </div>
-          <div class="entry-meta">2026 — Present</div>
+          <div class="entry-meta">Aug 2026 — Present</div>
         </div>
         <div class="entry-desc">Backend and cloud infrastructure for real-time payment processing. Worked across several Java/Spring Boot microservices, Kafka event pipelines, MongoDB, deployed on GKE with Terraform-managed infra and GitHub Actions CI/CD.</div>
         <div class="tag-row">
@@ -355,9 +392,34 @@
             <div class="entry-title">Software Engineer II</div>
             <div class="entry-org">Deutsche Bank — Instant Payments</div>
           </div>
-          <div class="entry-meta">2023 — 2026</div>
+          <div class="entry-meta">July 2023 — July 2026</div>
         </div>
+ 
+        <ul class="roadmap">
+          <li>
+            <div class="rm-row">
+              <span class="rm-title">Joined as Graduate Analyst</span>
+              <span class="rm-date">Jul 2023</span>
+            </div>
+            <p class="rm-desc">Joined as a Graduate Analyst through the Grad Rotation Program and worked in the Instant Payments and RFT Market Risk teams.</p>
+          </li>
+          <li>
+            <div class="rm-row">
+              <span class="rm-title">Promoted to Software Engineer I (Instant Payments)</span>
+              <span class="rm-date">Sep 2024</span>
+            </div>
+            <p class="rm-desc">Became a DB Grad mentor and led a small team of interns on Instant Payments projects.</p>
+          </li>
+          <li class="is-current">
+            <div class="rm-row">
+              <span class="rm-title">Promoted to Software Engineer II (Instant Payments)</span>
+              <span class="rm-date">Mar 2026</span>
+            </div>
+            <p class="rm-desc">Developed new features for the Instant Payment platform - Outbound and Proxy Payments.</p>
+          </li>
+        </ul>
         <div class="entry-desc">Backend and cloud infrastructure for real-time payment processing. Worked across several Java/Spring Boot microservices, Kafka event pipelines, MongoDB, deployed on GKE with Terraform-managed infra and GitHub Actions CI/CD.</div>
+ 
         <div class="tag-row">
           <span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">GKE</span>
         </div>
@@ -366,48 +428,72 @@
       <div class="entry glass reveal">
         <div class="entry-top">
           <div>
-            <div class="entry-title">Software Engineering Intern</div>
+            <div class="entry-title">Teaching Assistant, COMS 4111</div>
+            <div class="entry-org">Columbia University — Graduate Databases Course</div>
+          </div>
+          <div class="entry-meta">Sep 2022 — May 2023</div>
+        </div>
+        <div class="entry-desc">Supported graduate-level coursework in backend database systems through grading and office hours.</div>
+        <div class="tag-row">
+          <span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span>
+        </div>
+      </div>
+      
+      <div class="entry glass reveal">
+        <div class="entry-top">
+          <div>
+            <div class="entry-title">Software Engineer Intern</div>
             <div class="entry-org">Amazon</div>
           </div>
-          <div class="entry-meta">2022</div>
+          <div class="entry-meta">May 2022 — Aug 2022</div>
         </div>
-        <div class="entry-desc">Add a line here on what you shipped or owned during the internship.</div>
+        <div class="entry-desc">Developed a payments service API surfacing health insurance contract data to enterprise and consumer clients; shipped the React/TypeScript frontend (Harmony, AWS Polaris) and deployed and maintained the service on AWS resources like ECS, Fargate, S3, DynamoDB.</div>
+        <div class="tag-row">
+          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">AWS</span>
+        </div>
       </div>
 
       <div class="entry glass reveal">
         <div class="entry-top">
           <div>
-            <div class="entry-title">Teaching Assistant, COMS 4111</div>
-            <div class="entry-org">Columbia University — Graduate Databases Course</div>
+            <div class="entry-title">Tech Developer Intern</div>
+            <div class="entry-org">Sponsors of Educational Opportunity (SEO)</div>
           </div>
-          <div class="entry-meta">2022 — 2023</div>
+          <div class="entry-meta">June 2021 — Aug 2021</div>
         </div>
-        <div class="entry-desc">Supported graduate-level coursework in database systems.</div>
+        <div class="entry-desc">Built a full stack web app using the New York Times API using Python and Flask.</div>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">REST API</span>
+        </div>
       </div>
     </section>
 
     <section class="panel" id="panel-projects">
-      <div class="proj glass reveal">
+      <a class="proj glass reveal" href="https://github.com/oforiwaasam/text-to-sql-eval" target="_blank" rel="noopener">
+        <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
         <div class="proj-title">LLM Calibration on Text-to-SQL</div>
-        <div class="entry-desc">Independent framework evaluating Llama-3.1-8B on the Spider Text-to-SQL benchmark, measuring how well the model's confidence matches its actual accuracy — a core AI-security question for anything that lets a model act autonomously.</div>
+        <div class="entry-desc">Independent framework evaluating Llama-3.1-8B on the Spider Text-to-SQL benchmark, measuring how well the model's confidence matches its actual accuracy; a core AI-security question for anything that lets a model act autonomously.</div>
         <div class="metric"><span class="p-dot"></span>ECE: 0.2840</div>
         <div class="tag-row">
           <span class="tag">Llama-3.1-8B</span><span class="tag">Spider Benchmark</span><span class="tag">Groq API</span>
         </div>
-      </div>
-
-      <div class="proj glass reveal">
+      </a>
+ 
+      <a class="proj glass reveal" href="#" target="_blank" rel="noopener">
+        <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
         <div class="proj-title">French Study App</div>
         <div class="entry-desc">A spaced-practice app built for TCF Canada / TEF Canada prep, currently at B1 level material. FastAPI backend, React (Vite) frontend.</div>
         <div class="tag-row">
           <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Vite</span>
         </div>
-      </div>
+      </a>
     </section>
 
     <footer>
       <span>Lily Oforiwa Sam &middot; <span id="yr">©2026</span></span>
-      <span class="mono">hosted on GitHub Pages</span>
+      <a class="footer-icon" href="https://github.com/oforiwaasam/portfolio" target="_blank" rel="noopener" aria-label="View portfolio source on GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.02 1.75 2.68 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.2.66.79.55A10.53 10.53 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+      </a>
     </footer>
   </main>
 </div>
