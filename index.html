@@ -178,14 +178,64 @@
   .summary{ margin-top:14px; color:var(--text-mid); font-size:15.5px; line-height:1.65; max-width:56ch; }
 
   .links{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
-  .links a{
+  .links a, .link-btn{
     font-size:12.5px; font-weight:500; color:var(--text); text-decoration:none;
     border:1px solid var(--glass-brd); background:var(--glass); padding:7px 13px; border-radius:100px;
     font-family:var(--font-mono);
     -webkit-backdrop-filter:blur(var(--glass-blur)); backdrop-filter:blur(var(--glass-blur));
     transition:all .18s ease;
   }
-  .links a:hover{ border-color:var(--accent); color:var(--accent); }
+  .links a:hover, .link-btn:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ============================================================
+   WRITING LIST
+   ============================================================ */
+  .write-entry{
+    display:flex; justify-content:space-between; align-items:center; gap:14px;
+    width:100%; text-align:left; padding:16px 20px; margin:0 6px 10px;
+    border:1px solid var(--glass-brd); background:var(--glass); border-radius:var(--radius);
+    -webkit-backdrop-filter:blur(var(--glass-blur)); backdrop-filter:blur(var(--glass-blur));
+    color:inherit; font-family:inherit; cursor:pointer; transition:border-color .2s ease, transform .2s ease;
+  }
+  .write-entry:hover, .write-entry:focus-visible{ border-color:var(--glass-hi); transform:translateY(-2px); }
+  .write-entry .wt-title{ font-size:14.5px; font-weight:600; }
+  .write-entry .wt-date{ font-family:var(--font-mono); font-size:10.5px; color:var(--text-dim); white-space:nowrap; }
+  .write-entry .wt-arrow{ width:14px; height:14px; color:var(--text-dim); flex-shrink:0; transition:color .2s ease, transform .2s ease; }
+  .write-entry:hover .wt-arrow{ color:var(--accent); transform:translate(2px,-2px); }
+ 
+  /* ============================================================
+   PDF MODAL
+   ============================================================ */
+  .pdf-modal{
+    position:fixed; inset:0; z-index:50; display:none;
+    align-items:center; justify-content:center; padding:20px;
+  }
+  .pdf-modal.open{ display:flex; }
+  .pdf-modal .backdrop{
+    position:absolute; inset:0; background:var(--scrim);
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+  }
+  .pdf-modal .sheet{
+    position:relative; width:min(820px, 100%); height:min(86vh, 900px);
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .pdf-modal .sheet-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 18px; border-bottom:1px solid var(--hairline); flex-shrink:0;
+  }
+  .pdf-modal .sheet-title{ font-family:var(--font-mono); font-size:12.5px; color:var(--text-mid); }
+  .pdf-modal .sheet-actions{ display:flex; align-items:center; gap:8px; }
+  .pdf-modal .sheet-actions a, .pdf-modal .sheet-actions button{
+    font-family:var(--font-mono); font-size:11.5px; color:var(--text-dim);
+    background:none; border:1px solid var(--glass-brd); border-radius:100px;
+    padding:5px 11px; cursor:pointer; text-decoration:none; transition:all .15s ease;
+  }
+  .pdf-modal .sheet-actions a:hover, .pdf-modal .sheet-actions button:hover{ border-color:var(--accent); color:var(--accent); }
+  .pdf-modal iframe{ flex:1; width:100%; border:none; background:var(--bg-deep); }
+  .pdf-modal .fallback{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; padding:30px; text-align:center; color:var(--text-mid); font-size:13px;
+  }
 
   /* ============================================================
    TABS
@@ -321,7 +371,7 @@
       <a href="mailto:lilyoforiwaas@gmail.com">Email</a>
       <a href="https://www.linkedin.com/in/lily-oforiwaa-sam/" target="_blank">LinkedIn</a>
       <a href="https://github.com/oforiwaasam" target="_blank">GitHub</a>
-      <a href="#" target="_blank">Resume</a>
+      <button class="link-btn" data-pdf="resume.pdf" data-pdf-title="Resume">Resume</button>
     </div>
   </div>
 
@@ -479,12 +529,12 @@
         </div>
       </a>
  
-      <a class="proj glass reveal" href="#" target="_blank" rel="noopener">
+      <a class="proj glass reveal" href="https://pypi.org/project/converterpro/" target="_blank" rel="noopener">
         <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
-        <div class="proj-title">French Study App</div>
-        <div class="entry-desc">A spaced-practice app built for TCF Canada / TEF Canada prep, currently at B1 level material. FastAPI backend, React (Vite) frontend.</div>
+        <div class="proj-title">ConverterPro</div>
+        <div class="entry-desc">A scalable Python library for deterministic unit conversion. Published on PyPI.</div>
         <div class="tag-row">
-          <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Vite</span>
+          <span class="tag">Python</span><span class="tag">Poetry</span><span class="tag">PyPI</span>
         </div>
       </a>
     </section>
