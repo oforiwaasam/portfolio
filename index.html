@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+ 
 <style>
   /* ============================================================
    THEME TOKENS
@@ -16,26 +16,26 @@
     --font-sans:'Inter', system-ui, sans-serif;
     --font-display:'Space Grotesk', sans-serif;
     --font-mono:'JetBrains Mono', ui-monospace, monospace;
-
+ 
     --maxw: 720px;
     --radius: 14px;
     --gutter: clamp(1.1rem, 5vw, 2rem);
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
-
+ 
     --glass-blur: 18px;
   }
-
+ 
   [data-theme="dark"]{
   --bg:        #0a0d14;
   --bg-deep:   #060810;
   --text:      #e9edf5;
   --text-mid:  #9aa4b8;
   --text-dim:  #6b7488;
-
+ 
   --accent:      #6f9bff;
   --accent-soft: rgba(111,155,255,0.14);
   --pulse:       #e0a94f;
-
+ 
   --glass:       rgba(255,255,255,0.045);
   --glass-brd:   rgba(255,255,255,0.10);
   --glass-hi:    rgba(255,255,255,0.20);
@@ -43,18 +43,18 @@
   --shadow:      0 1px 1px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.45);
   --scrim:       rgba(10,13,20,0.7);
   } 
-
+ 
   [data-theme="light"]{
   --bg:        #f2f4f8;
   --bg-deep:   #e7eaf1;
   --text:      #12141c;
   --text-mid:  #5b6272;
   --text-dim:  #7b8296;
-
+ 
   --accent:      #2f5dff;
   --accent-soft: #e7ecff;
   --pulse:       #b3760f;
-
+ 
   --glass:       rgba(255,255,255,0.6);
   --glass-brd:   rgba(20,22,30,0.10);
   --glass-hi:    rgba(255,255,255,0.85);
@@ -62,9 +62,8 @@
   --shadow:      0 1px 1px rgba(20,22,30,.05), 0 12px 32px rgba(20,22,30,.08);
   --scrim:       rgba(242,244,248,0.75);
   }
-
+ 
   *,*::before,*::after{ box-sizing:border-box; }
-  /* *{box-sizing:border-box; margin:0; padding:0;} */
   html{ scroll-behavior:smooth; }
   body{
     margin:0; background:var(--bg); color:var(--text);
@@ -75,9 +74,9 @@
   .mono{ font-family:var(--font-mono); }
   .display{ font-family:var(--font-display); }
   :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
-
+ 
   .wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
-
+ 
   /* ============================================================
    AMBIENT MESH BACKGROUND
    ============================================================ */
@@ -89,11 +88,11 @@
   [data-theme="light"] .mesh .b1{ opacity:.20; }
   [data-theme="light"] .mesh .b2{ opacity:.14; }
   [data-theme="light"] .mesh .b3{ opacity:.12; }
-
+ 
   @keyframes float1{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(6vw,5vh,0) scale(1.15);} }
   @keyframes float2{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(-7vw,-6vh,0) scale(1.1);} }
   @keyframes float3{ from{transform:translate3d(0,0,0) scale(1);} to{transform:translate3d(4vw,-7vh,0) scale(1.18);} }
-
+ 
   .mesh::after{
     content:''; position:absolute; inset:0;
     background-image:
@@ -104,11 +103,11 @@
     -webkit-mask-image:radial-gradient(120% 90% at 50% 0%, #000 20%, transparent 78%);
     opacity:.5;
   }
-
+ 
   @media (prefers-reduced-motion:reduce){
     .mesh span{ animation:none; }
   }
-
+ 
   /* ============================================================
    GLASS PRIMITIVE
    ============================================================ */
@@ -132,7 +131,7 @@
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
     .glass{ background:var(--bg-deep); }
   }
-
+ 
   /* ============================================================
    HEADER
    ============================================================ */
@@ -151,7 +150,7 @@
   }
   @keyframes sweep{ to { left:120%; } }
   @media (prefers-reduced-motion:reduce){ .rail::after{ animation:none; } }
-
+ 
   .top{ padding:40px 0 0; }
   .status-row{
     display:flex; justify-content:space-between; align-items:baseline;
@@ -161,7 +160,7 @@
   .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--accent); margin-right:6px; animation:blink 1.6s ease-in-out infinite; }
   @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
   @media (prefers-reduced-motion:reduce){ .dot{ animation:none; } }
-
+ 
   .theme-btn{
     background:var(--glass); border:1px solid var(--glass-brd); color:var(--text);
     width:34px; height:34px; border-radius:50%; cursor:pointer;
@@ -171,12 +170,12 @@
   }
   .theme-btn:hover{ border-color:var(--glass-hi); }
   .theme-btn svg{ width:16px; height:16px; }
-
+ 
   .hero{ padding:6px 22px 26px; margin-bottom:8px; }
   .role{ color:var(--accent); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px; }
   h1{ font-size:36px; line-height:1.1; letter-spacing:-0.01em; margin:0; }
   .summary{ margin-top:14px; color:var(--text-mid); font-size:15.5px; line-height:1.65; max-width:56ch; }
-
+ 
   .links{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
   .links a, .link-btn{
     font-size:12.5px; font-weight:500; color:var(--text); text-decoration:none;
@@ -186,7 +185,7 @@
     transition:all .18s ease;
   }
   .links a:hover, .link-btn:hover{ border-color:var(--accent); color:var(--accent); }
-
+ 
   /* ============================================================
    WRITING LIST
    ============================================================ */
@@ -236,7 +235,7 @@
     flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:10px; padding:30px; text-align:center; color:var(--text-mid); font-size:13px;
   }
-
+ 
   /* ============================================================
    TABS
    ============================================================ */
@@ -249,32 +248,32 @@
   nav.tabs button .idx{ color:var(--accent); margin-right:6px; }
   nav.tabs button.active{ color:var(--text); border-bottom-color:var(--accent); }
   nav.tabs button:hover{ color:var(--text); }
-
+ 
   /* ============================================================
    CONTENT
    ============================================================ */
   main{ padding:30px 0 60px; }
   .panel{ display:none; }
   .panel.active{ display:block; }
-
+ 
   .reveal{ opacity:0; transform:translateY(14px); transition:opacity .55s var(--ease), transform .55s var(--ease); }
   .reveal.in{ opacity:1; transform:translateY(0); }
-
+ 
   .lede{ font-size:14px; line-height:1.75; color:var(--text); max-width:58ch; margin:0 22px; }
   .lede b{ font-weight:600; color:var(--text); }
-
+ 
   h2.section-head{
     font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase;
     letter-spacing:.1em; color:var(--text-dim); margin:30px 22px 12px;
   }
-
+ 
   .entry{ padding:18px 20px; margin:0 6px 12px; }
   .entry-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
   .entry-title{ font-weight:600; font-size:15px; }
   .entry-meta{ font-family:var(--font-mono); font-size:11px; color:var(--text-dim); white-space:nowrap; }
   .entry-org{ color:var(--accent); font-size:13px; font-weight:500; margin-top:2px; }
   .entry-desc{ margin-top:10px; color:var(--text-mid); font-size:14px; line-height:1.6; }
-
+ 
   .roadmap{ list-style:none; margin:14px 0 2px; padding:0; }
   .roadmap li{
     position:relative; padding:0 0 16px 20px; border-left:1px solid var(--hairline);
@@ -295,16 +294,16 @@
   .roadmap .rm-desc{
     margin-top:5px; font-size:12.5px; line-height:1.55; color:var(--text-mid); max-width:60ch;
   }
-
+ 
   .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
   .tag{
     font-family:var(--font-mono); font-size:10.5px; color:var(--text);
     background:var(--accent-soft); border:1px solid var(--glass-brd); padding:3px 9px; border-radius:6px;
   }
-
+ 
   .skill-group{ margin:0 22px 18px; }
   .skill-group .label{ font-size:10.5px; font-family:var(--font-mono); color:var(--text-dim); margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em; }
-
+ 
   .proj{
     padding:20px; margin:0 6px 14px; display:block; position:relative;
     text-decoration:none; color:inherit; transition:border-color .2s ease, transform .2s ease;
@@ -322,7 +321,7 @@
     padding:3px 9px; border-radius:6px; margin-top:10px;
   }
   .metric .p-dot{ width:5px; height:5px; border-radius:50%; background:var(--pulse); }
-
+ 
   footer{
     border-top:1px solid var(--hairline); padding:20px 22px 44px; margin-top:10px;
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
@@ -335,7 +334,7 @@
   }
   .footer-icon:hover, .footer-icon:focus-visible{ color:var(--accent); border-color:var(--accent); }
   .footer-icon svg{ width:14px; height:14px; }
-
+ 
   @media (max-width:520px){
     h1{ font-size:28px; }
     nav.tabs button{ margin-right:16px; font-size:12px; }
@@ -344,11 +343,11 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="mesh"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
-
+ 
 <div class="rail" id="rail"></div>
-
+ 
 <div class="wrap">
   <div class="top">
     <div class="status-row">
@@ -361,12 +360,12 @@
       </span>
     </div>
   </div>
-
+ 
   <div class="hero glass">
     <div class="role">Software Engineer &middot; Backend &amp; Infra</div>
     <h1 class="display">Lily Oforiwa Sam</h1>
     <p class="summary">Software engineer with 3 years of experience building backend systems that move money in real time at Deutsche Bank. Lately, I've been pulled toward AI safety and model calibration, and I've been contributing to open source projects in the side.</p>
-
+ 
     <div class="links">
       <a href="mailto:lilyoforiwaas@gmail.com">Email</a>
       <a href="https://www.linkedin.com/in/lily-oforiwaa-sam/" target="_blank">LinkedIn</a>
@@ -374,7 +373,7 @@
       <button class="link-btn" data-pdf="resume.pdf" data-pdf-title="Resume">Resume</button>
     </div>
   </div>
-
+ 
   <div>
     <nav class="tabs" role="tablist">
       <button class="active" data-tab="me" role="tab" aria-selected="true"><span class="idx">01</span>About Me</button>
@@ -382,12 +381,12 @@
       <button data-tab="projects" role="tab" aria-selected="false"><span class="idx">03</span>Projects</button>
     </nav>
   </div>
-
+ 
   <main>
     <section class="panel active" id="panel-me">
       <p class="lede reveal">I was born and raised in Ghana, and I'm currently based in the US. I'm an enthusiastic, goal-oriented software engineer with a passion for building robust solutions. I'm passionate about teaching and mentoring others and I'm always looking for opportunities to learn and grow as a developer, so I consider myself a <b>lifelong learner</b>.</p>
       <p class="lede reveal" style="margin-top:14px;">My 3 years of software engineering experience spans across various domains: backend development, frontend development, and infrastructure. The nature of my work at Deutsche Bank led me to develop an interest in <b>AI safety and overconfidence</b>, and I've recently built an independent calibration framework evaluating Llama-3.1-8B and other models on the <b>Spider</b> text-to-SQL benchmark.</p>
-
+ 
       <h2 class="section-head reveal">Education</h2>
       <div class="entry glass reveal">
         <div class="entry-top">
@@ -404,19 +403,19 @@
       <div class="skill-group reveal">
         <div class="label">Languages &amp; Frameworks</div>
         <div class="tag-row">
-          <span class="tag">Java / Spring Boot</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Flask</span>
+          <span class="tag">Java/Spring Boot</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Flask</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <div class="label">Databases &amp; Infrastructure</div>
         <div class="tag-row">
-          <span class="tag">Kafka</span><span class="tag">MongoDB</span><span class="tag">GKE / GCP</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span>
+          <span class="tag">Kafka</span><span class="tag">MongoDB</span><span class="tag">GKE/GCP</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <div class="label">Emerging Focus</div>
         <div class="tag-row">
-          <span class="tag">AI Security</span><span class="tag">Model Calibration</span><span class="tag">LLM Eval</span>
+          <span class="tag">AI Alignment & Safety</span><span class="tag">Model Calibration</span>
         </div>
       </div>
     </section>
@@ -435,7 +434,7 @@
           <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">GCP</span>
         </div>
       </div>
-
+ 
       <div class="entry glass reveal">
         <div class="entry-top">
           <div>
@@ -474,7 +473,7 @@
           <span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">GKE</span>
         </div>
       </div>
-
+ 
       <div class="entry glass reveal">
         <div class="entry-top">
           <div>
@@ -502,7 +501,7 @@
           <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">AWS</span>
         </div>
       </div>
-
+ 
       <div class="entry glass reveal">
         <div class="entry-top">
           <div>
@@ -517,7 +516,7 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="panel" id="panel-projects">
       <a class="proj glass reveal" href="https://github.com/oforiwaasam/text-to-sql-eval" target="_blank" rel="noopener">
         <svg class="proj-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
@@ -538,7 +537,21 @@
         </div>
       </a>
     </section>
-
+ 
+    <div class="pdf-modal" id="pdfModal" role="dialog" aria-modal="true" aria-labelledby="pdfModalTitle">
+      <div class="backdrop" data-close></div>
+      <div class="sheet glass">
+        <div class="sheet-head">
+          <span class="sheet-title" id="pdfModalTitle">Document</span>
+          <div class="sheet-actions">
+            <a id="pdfOpenNewTab" href="#" target="_blank" rel="noopener">Open in new tab</a>
+            <button data-close>Close</button>
+          </div>
+        </div>
+        <iframe id="pdfFrame" title="PDF preview"></iframe>
+      </div>
+    </div>
+ 
     <footer>
       <span>Lily Oforiwa Sam &middot; <span id="yr">©2026</span></span>
       <a class="footer-icon" href="https://github.com/oforiwaasam/portfolio" target="_blank" rel="noopener" aria-label="View portfolio source on GitHub">
@@ -547,17 +560,17 @@
     </footer>
   </main>
 </div>
-
+ 
 <script>
   (function(){
   'use strict';
-
+ 
   /* ---------- tabs ---------- */
   var tabs = document.querySelectorAll('nav.tabs button');
   var panels = { me:'panel-me', work:'panel-work', projects:'panel-projects' };
   var railPct = { me:'12%', work:'50%', projects:'88%' };
   var rail = document.getElementById('rail');
-
+ 
   tabs.forEach(function(btn){
     btn.addEventListener('click', function(){
       tabs.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
@@ -568,7 +581,7 @@
       revealVisible();
     });
   });
-
+ 
   /* ---------- theme (in-memory only, no storage APIs) ---------- */
   var root = document.documentElement;
   var btn = document.getElementById('themeBtn');
@@ -576,10 +589,10 @@
   var prefersLight = window.matchMedia('(prefers-color-scheme: light)');
   var theme = prefersLight.matches ? 'light' : 'dark';
   var userChose = false;
-
+ 
   var sunPath = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>';
   var moonPath = '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path>';
-
+ 
   function apply(t){
     theme = t;
     root.setAttribute('data-theme', t);
@@ -587,16 +600,16 @@
     btn.setAttribute('aria-label', 'Switch to ' + (t === 'dark' ? 'light' : 'dark') + ' theme');
   }
   apply(theme);
-
+ 
   btn.addEventListener('click', function(){
     userChose = true;
     apply(theme === 'dark' ? 'light' : 'dark');
   });
-
+ 
   prefersLight.addEventListener('change', function(e){
     if (!userChose) apply(e.matches ? 'light' : 'dark');
   });
-
+ 
   /* ---------- render-latency ticker ---------- */
   var clock = document.getElementById('clock');
   function tick(){
@@ -605,7 +618,7 @@
   }
   tick();
   setInterval(tick, 2200);
-
+ 
   /* ---------- scroll reveal ---------- */
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function revealVisible(){
@@ -622,11 +635,49 @@
     items.forEach(function(el){ io.observe(el); });
   }
   revealVisible();
-
+ 
   /* ---------- footer year ---------- */
   document.getElementById('yr').textContent = '© ' + new Date().getFullYear();
+ 
+  /* ---------- PDF modal ---------- */
+  var modal = document.getElementById('pdfModal');
+  var frame = document.getElementById('pdfFrame');
+  var titleEl = document.getElementById('pdfModalTitle');
+  var newTabLink = document.getElementById('pdfOpenNewTab');
+  var lastFocused = null;
+ 
+  function openPdf(url, title){
+    lastFocused = document.activeElement;
+    titleEl.textContent = title || 'Document';
+    newTabLink.href = url;
+    frame.src = url;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('[data-close]').focus();
+  }
+ 
+  function closePdf(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    frame.src = 'about:blank';
+    if (lastFocused) lastFocused.focus();
+  }
+ 
+  document.querySelectorAll('[data-pdf]').forEach(function(el){
+    el.addEventListener('click', function(){
+      openPdf(el.getAttribute('data-pdf'), el.getAttribute('data-pdf-title'));
+    });
+  });
+ 
+  modal.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click', closePdf);
+  });
+ 
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.classList.contains('open')) closePdf();
+  });
 })();
 </script>
-
+ 
 </body>
 </html>
